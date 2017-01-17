@@ -1,0 +1,13 @@
+version: '2'
+services:
+  haproxy:
+    container_name: haproxy
+    image: haproxy
+    restart: always
+    volumes:
+      - "./resources/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+    environment:
+      - "DNS_SERVER=${DNS_SERVER}"
+      - "APP_DNS=${APP_DNS}"
+    ports:
+      - "443:443"
